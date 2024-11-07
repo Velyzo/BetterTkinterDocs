@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dokumentation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar-brand">Dokumentation</div>
+    <input type="text" id="search" placeholder="Thema suchen..." class="search-input" autocomplete="off">
+  </header>
+
+  <main>
+    <div id="search-result" class="search-result"></div>
+    <section id="section1" class="content-section">
+      <h2>Einleitung</h2>
+      <p>Hier finden Sie eine kurze Einleitung zur Dokumentation.</p>
+    </section>
+
+    <section id="section2" class="content-section">
+      <h2>Kapitel 1</h2>
+      <p>Dies ist der erste Abschnitt mit den ersten Informationen.</p>
+    </section>
+
+    <section id="section3" class="content-section">
+      <h2>Kapitel 2</h2>
+      <p>Hier folgt der zweite Abschnitt mit zusätzlichen Details.</p>
+    </section>
+
+    <section id="section4" class="content-section">
+      <h2>Fazit</h2>
+      <p>Abschlussbemerkungen und Zusammenfassung.</p>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("search").addEventListener("input", function () {
+      const searchQuery = this.value.toLowerCase();
+      const sections = document.querySelectorAll(".content-section");
+      const resultDisplay = document.getElementById("search-result");
+      let matchCount = 0;
+      const startTime = performance.now();
+  
+      sections.forEach(section => {
+        const h2 = section.querySelector("h2");
+        const p = section.querySelector("p");
+  
+        if (!section.dataset.originalH2) {
+          section.dataset.originalH2 = h2.innerHTML;
+        }
+        if (!section.dataset.originalP) {
+          section.dataset.originalP = p.innerHTML;
+        }
+  
+        if (searchQuery && (h2.textContent.toLowerCase().includes(searchQuery) || p.textContent.toLowerCase().includes(searchQuery))) {
+          section.style.display = "block";
+          
+          h2.innerHTML = section.dataset.originalH2.replace(new RegExp(`(${searchQuery})`, "gi"), `<mark>$1</mark>`);
+          
+          matchCount++;
+        } else if (!searchQuery) {
+          section.style.display = "block";
+          h2.innerHTML = section.dataset.originalH2;
+          p.innerHTML = section.dataset.originalP;
+        } else {
+          section.style.display = "none";
+        }
+      });
+  
+      const endTime = performance.now();
+      const searchTime = ((endTime - startTime) / 1000).toFixed(2);
+  
+      resultDisplay.innerText = searchQuery
+        ? `${matchCount} Treffer gefunden in ${searchTime} Sekunden`
+        : "";
+    });
+  </script>  
+</body>
+</html>
