@@ -4,7 +4,30 @@
     box-sizing: border-box;
     scroll-behavior: smooth;
   }
-  
+
+ pre {
+   background-color: #2d2d2d;
+   color: #f8f8f2;
+   padding: 16px;
+   border-radius: 8px;
+   overflow-x: auto;
+   line-height: 1.5;
+   margin: 1em 0;
+   font-size: 0.9em;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ }
+
+ code {
+   background-color: #44475a;
+   color: #ff79c6;
+   padding: 2px 4px;
+   border-radius: 4px;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 0.95em;
+  }
+  pre code {
+    color: #8be9fd;
+  }
   body {
     font-family: Arial, sans-serif;
     background-color: #000;
@@ -106,6 +129,11 @@
   .content-section h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
+  }
+  .content-section h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
   
   @keyframes fadeInUp {
