@@ -4,9 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="IbDrTYDZ4F2fAo2fMpnzGDa-val_CshY8mAo-hIuW_k" />
-  <title>BetterTkinterDocs</title>
+  <meta name="description" content="BetterTkinter is a Python library for creating modern, user-friendly GUI applications using Tkinter. Enhance your UI development with additional components and utilities." />
+  <meta name="keywords" content="BetterTkinter, Python, Tkinter, GUI, Python GUI library, Tkinter widgets, Python library for GUI development, Tkinter extensions" />
+  <meta property="og:title" content="BetterTkinter Documentation - Python GUI Library" />
+  <meta property="og:description" content="BetterTkinter is a Python library designed to simplify the development of GUI applications using Tkinter." />
+  <meta property="og:image" content="https://your-website-url.com/icon.png" />
+  <meta property="og:url" content="https://your-website-url.com" />
+  <meta property="og:type" content="website" />
+  
+  <title>BetterTkinter Documentation - Python GUI Library</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/x-icon" href="icon.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "BetterTkinter",
+      "url": "https://your-website-url.com",
+      "description": "BetterTkinter is a Python library designed to simplify the development of GUI applications using Tkinter, providing additional components and utilities.",
+      "developer": {
+        "@type": "Organization",
+        "name": "Your Company/Developer Name",
+        "url": "https://your-website-url.com"
+      },
+      "operatingSystem": "Cross-platform",
+      "programmingLanguage": "Python",
+      "license": "https://opensource.org/licenses/MIT"
+    }
+  </script>
+
 </head>
 <body>
   <header class="navbar">
@@ -18,6 +46,7 @@
     <div id="search-result" class="search-result"></div>
 
     <section id="section0" class="content-section">
+      <h1>BetterTkinter Documentation</h1>
       <h2 class="special">BetterTkinter</h2>
       <p>👋 Welcome to the Documentation for BetterTkinter! 👋</p>
       <h3>Overview</h3>
@@ -26,232 +55,134 @@
       <p>To get started with BetterTkinter, you can install it via pip:</p>
       <pre><code>pip install bettertkinter</code></pre>
       <h3>Examples</h3>
-      <p>You can download all examples in the BetterTkinterDocs repository on GitHub.</p>
-      </section>
+      <p>You can download all examples in the BetterTkinterDocs repository on GitHub. Check out our other documentation on <a href="#section2">BTkButton</a> or <a href="#section5">BTkFrame</a>.</p>
+    </section>
 
     <section id="section1" class="content-section">
-        <h2>BTk</h2>
-        <p>Base documentation from https://docs.python.org/3/library/tkinter.html</p>
-        <p>Theme and more stuff is Coming soon!</p>
-      </section>
-      
-      <section id="section2" class="content-section">
-        <h2>BTkButton</h2>
-        <p><strong>Beschreibung:</strong> <b>btk.button</b> ist eine benutzerfreundliche und anpassbare Schaltfläche für die GUI-Entwicklung mit BetterTkinter. Sie bietet einfache Anpassungen des Aussehens und Verhaltens der Schaltfläche, einschließlich abgerundeter Ecken und Hover-Effekten.</p>
-      
-        <h3>Verwendung</h3>
-        <pre><code>import bettertkinter as btk
-      
-      # Erstellen eines Buttons
-      button = btk.button(parent, text="Klicken Sie hier", command=my_function)</code></pre>
-      
-        <h3>Argumente:</h3>
-        <ul>
-          <li><strong>parent</strong> (<em>tk.Widget</em>): Der Eltern-Widget (normalerweise ein Fenster oder Frame), in dem der Button angezeigt wird.</li>
-          <li><strong>text</strong> (<em>str</em>): Der Text, der auf dem Button angezeigt wird. Standardwert: ""</li>
-          <li><strong>bg_color</strong> (<em>str</em>): Die Hintergrundfarbe des Buttons. Standardwert: "#0078D7" (Blau).</li>
-          <li><strong>fg_color</strong> (<em>str</em>): Die Farbe des Textes auf dem Button. Standardwert: "white" (Weiß).</li>
-          <li><strong>hover_color</strong> (<em>str</em>): Die Farbe des Buttons, wenn der Mauszeiger darüber schwebt. Standardwert: "#005A9E" (Dunkleres Blau).</li>
-          <li><strong>rounded_radius</strong> (<em>int</em>): Der Radius der abgerundeten Ecken des Buttons. Standardwert: 20.</li>
-          <li><strong>width</strong> (<em>int</em>): Die Breite des Buttons in Pixel. Standardwert: 100.</li>
-          <li><strong>height</strong> (<em>int</em>): Die Höhe des Buttons in Pixel. Standardwert: 40.</li>
-          <li><strong>command</strong> (<em>function</em>): Eine Funktion, die ausgeführt wird, wenn der Button geklickt wird.</li>
-        </ul>
-      
-        <h3>Beispiel:</h3>
-        <pre><code>import tkinter as tk
-      import bettertkinter as btk
-      
-      def on_button_click():
-          print("Button wurde geklickt!")
-      
-      # Hauptfenster erstellen
-      root = tk.Tk()
-      root.title("BetterTkinter Beispiel")
-      
-      # Button hinzufügen
-      button = btk.BTkButton(
-          root, 
-          text="Klicken Sie hier", 
-          bg_color="#4CAF50", 
-          fg_color="white", 
-          hover_color="#45a049", 
-          rounded_radius=25, 
-          width=150, 
-          height=50, 
-          command=on_button_click
-      )
-      
-      # Button im Fenster platzieren
-      button.pack(pady=20)
-      
-      # Hauptloop starten
-      root.mainloop()</code></pre>
-      
-        <h3>Beschreibung der Funktionen:</h3>
-        <ul>
-          <li><strong>Text und Stil:</strong> Der Button kann durch die Parameter <code>text</code>, <code>bg_color</code>, <code>fg_color</code> und <code>hover_color</code> individuell angepasst werden.</li>
-          <li><strong>Abgerundete Ecken:</strong> Mit der Option <code>rounded_radius</code> können abgerundete Ecken für den Button festgelegt werden.</li>
-          <li><strong>Hover-Effekt:</strong> Der Button ändert seine Farbe beim Überfahren mit der Maus, basierend auf der <code>hover_color</code>.</li>
-        </ul>
-      
-        <h3>Tipps:</h3>
-        <ul>
-          <li>Stellen Sie sicher, dass der <code>parent</code>-Parameter korrekt gesetzt ist, wenn der Button in einem <code>Frame</code> oder einem anderen Container-Widget angezeigt wird.</li>
-          <li>Mit der <code>command</code>-Option können Sie jede gewünschte Funktion ausführen, wenn der Button angeklickt wird.</li>
-        </ul>
-      </section>
-      
-      
-      <section id="section3" class="content-section">
-        <h2>BTkSlider</h2>
-        <p>Coming soon!</p>
-      </section>
-      
-      <section id="section4" class="content-section">
-        <h2>BTkSwitch</h2>
-        <p>Coming soon!</p>
-      </section>
-      
-      <section id="section5" class="content-section">
-        <h2>BTkFrame</h2>
-        <p><strong>Beschreibung:</strong> <b>BTkFrame</b> ist eine benutzerdefinierte Klasse, die von <code>tk.Frame</code> erbt und es ermöglicht, Frames mit erweiterten Anpassungsoptionen zu erstellen. Sie bietet die Möglichkeit, abgerundete Ecken, Farben, Rahmen und vieles mehr zu konfigurieren.</p>
-      
-        <h3>Verwendung</h3>
-        <pre><code>import tkinter as tk
-      import bettertkinter as btk
-      
-      # Erstellen eines BTkFrame
-      frame = btk.BTkFrame(parent, radius=25, width=200, height=150, color="#4CAF50", 
-                       border=True, border_color="#FF4500", border_thick=5, border_bg_color="#FFFFFF")</code></pre>
-      
-        <h3>Argumente:</h3>
-        <ul>
-          <li><strong>parent</strong> (<em>tk.Widget</em>): Der Eltern-Widget (normalerweise ein Fenster oder ein anderes Frame), in dem das Frame angezeigt wird.</li>
-          <li><strong>radius</strong> (<em>int</em>): Der Radius der abgerundeten Ecken des Frames. Standardwert: 25.</li>
-          <li><strong>width</strong> (<em>int</em>): Die Breite des Frames in Pixel. Standardwert: 100.</li>
-          <li><strong>height</strong> (<em>int</em>): Die Höhe des Frames in Pixel. Standardwert: 100.</li>
-          <li><strong>color</strong> (<em>str</em>): Die Hintergrundfarbe des Frames, entweder als Hex-Farbcode oder als benannter Farbstring. Standardwert: "#005A9E".</li>
-          <li><strong>border</strong> (<em>bool</em>): Bestimmt, ob der Frame einen Rand haben soll. Standardwert: <code>False</code>.</li>
-          <li><strong>border_color</strong> (<em>str</em>): Die Farbe des Rahmens, wenn <code>border</code> auf <code>True</code> gesetzt ist. Standardwert: "#FF4500".</li>
-          <li><strong>border_thick</strong> (<em>int</em>): Die Dicke des Rahmens. Standardwert: 0 (kein Rahmen).</li>
-          <li><strong>border_bg_color</strong> (<em>str</em>): Die Hintergrundfarbe des Rahmens. Standardwert: "#000000".</li>
-        </ul>
-      
-        <h3>Beispiel:</h3>
-        <pre><code>import tkinter as tk
-      import bettertkinter as btk
-      
-      def create_frame():
-          # Erstellen des Hauptfensters
-          root = btk.BTk()
-          root.title("BTkFrame Beispiel")
-      
-          # Erstellen eines BTkFrame
-          frame = btk.BTkFrame(
-              root,
-              radius=25,
-              width=200,
-              height=150,
-              color="#4CAF50",
-              border=True,
-              border_color="#FF4500",
-              border_thick=5,
-              border_bg_color="#FFFFFF"
-          )
-      
-          # Frame im Fenster platzieren
-          frame.pack(padx=20, pady=20)
-      
-          # Hauptloop starten
-          root.mainloop()
-      
-      create_frame()</code></pre>
-      
-        <h3>Beschreibung der Funktionen:</h3>
-        <ul>
-          <li><strong>Radius der Ecken:</strong> Die <code>radius</code>-Option ermöglicht es, abgerundete Ecken für das Frame zu definieren.</li>
-          <li><strong>Hintergrundfarbe:</strong> Mit der <code>color</code>-Option wird die Hintergrundfarbe des Frames festgelegt.</li>
-          <li><strong>Rahmen:</strong> Wenn <code>border</code> auf <code>True</code> gesetzt ist, wird ein Rand um den Frame angezeigt, dessen Farbe und Dicke mit <code>border_color</code> und <code>border_thick</code> angepasst werden können.</li>
-          <li><strong>Rahmenhintergrundfarbe:</strong> Die <code>border_bg_color</code>-Option ermöglicht es, die Hintergrundfarbe des Rahmens zu definieren.</li>
-        </ul>
-      
-        <h3>Tipps:</h3>
-        <ul>
-          <li>Verwenden Sie die <code>radius</code>-Option, um dem Frame ein modernes Aussehen mit abgerundeten Ecken zu verleihen.</li>
-          <li>Stellen Sie sicher, dass der Frame in einem Container (wie einem Fenster oder einem anderen Frame) platziert wird, um ihn anzuzeigen.</li>
-          <li>Aktivieren Sie den Rand, wenn Sie dem Frame ein markantes Aussehen verleihen möchten, und passen Sie ihn nach Belieben an.</li>
-        </ul>
-      </section>
-      
-      
-      <section id="section6" class="content-section">
-        <h2>btk.progressbar</h2>
-        <p>Coming soon!</p>
-      </section>
-      
-      <section id="section7" class="content-section">
-        <h2>btk.menubar</h2>
-        <p>Coming soon!</p>
-      </section>
-      
-      <section id="section8" class="content-section">
-        <h2>btk.titlebar</h2>
-        <p>Coming soon!</p>
-      </section>
-      
-      <section id="section9" class="content-section">
-        <h2>btk.notification</h2>
-        <p>Coming soon!</p>
-      </section>
-      
-      <section id="section10" class="content-section">
-        <h2>btk.system_tray</h2>
-        <p>Coming soon!</p>
-      </section>      
-  </main>
+      <h2>BTk</h2>
+      <p>Base documentation from https://docs.python.org/3/library/tkinter.html</p>
+      <p>Theme and more stuff is Coming soon!</p>
+    </section>
 
-  <script>
-    document.getElementById("search").addEventListener("input", function () {
-      const searchQuery = this.value.toLowerCase();
-      const sections = document.querySelectorAll(".content-section");
-      const resultDisplay = document.getElementById("search-result");
-      let matchCount = 0;
-      const startTime = performance.now();
-  
-      sections.forEach(section => {
-        const h2 = section.querySelector("h2");
-        const p = section.querySelector("p");
-  
-        if (!section.dataset.originalH2) {
-          section.dataset.originalH2 = h2.innerHTML;
-        }
-        if (!section.dataset.originalP) {
-          section.dataset.originalP = p.innerHTML;
-        }
-  
-        if (searchQuery && (h2.textContent.toLowerCase().includes(searchQuery) || p.textContent.toLowerCase().includes(searchQuery))) {
-          section.style.display = "block";
-          
-          h2.innerHTML = section.dataset.originalH2.replace(new RegExp(`(${searchQuery})`, "gi"), `<mark>$1</mark>`);
-          
-          matchCount++;
-        } else if (!searchQuery) {
-          section.style.display = "block";
-          h2.innerHTML = section.dataset.originalH2;
-          p.innerHTML = section.dataset.originalP;
-        } else {
-          section.style.display = "none";
-        }
-      });
-  
-      const endTime = performance.now();
-      const searchTime = ((endTime - startTime) / 1000).toFixed(2);
-  
-      resultDisplay.innerText = searchQuery
-        ? `${matchCount} Treffer gefunden in ${searchTime} Sekunden`
-        : "";
-    });
-  </script>  
+    <section id="section2" class="content-section">
+      <h2>BTkButton</h2>
+      <p><strong>Beschreibung:</strong> <b>btk.button</b> ist eine benutzerfreundliche und anpassbare Schaltfläche für die GUI-Entwicklung mit BetterTkinter. Sie bietet einfache Anpassungen des Aussehens und Verhaltens der Schaltfläche, einschließlich abgerundeter Ecken und Hover-Effekten.</p>
+
+      <h3>Verwendung</h3>
+      <pre><code>import bettertkinter as btk
+
+# Erstellen eines Buttons
+button = btk.button(parent, text="Klicken Sie hier", command=my_function)</code></pre>
+
+      <h3>Argumente:</h3>
+      <ul>
+        <li><strong>parent</strong> (<em>tk.Widget</em>): Der Eltern-Widget (normalerweise ein Fenster oder Frame), in dem der Button angezeigt wird.</li>
+        <li><strong>text</strong> (<em>str</em>): Der Text, der auf dem Button angezeigt wird. Standardwert: ""</li>
+        <li><strong>bg_color</strong> (<em>str</em>): Die Hintergrundfarbe des Buttons. Standardwert: "#0078D7" (Blau).</li>
+        <li><strong>fg_color</strong> (<em>str</em>): Die Farbe des Textes auf dem Button. Standardwert: "white" (Weiß).</li>
+        <li><strong>hover_color</strong> (<em>str</em>): Die Farbe des Buttons, wenn der Mauszeiger darüber schwebt. Standardwert: "#005A9E" (Dunkleres Blau).</li>
+        <li><strong>rounded_radius</strong> (<em>int</em>): Der Radius der abgerundeten Ecken des Buttons. Standardwert: 20.</li>
+        <li><strong>width</strong> (<em>int</em>): Die Breite des Buttons in Pixel. Standardwert: 100.</li>
+        <li><strong>height</strong> (<em>int</em>): Die Höhe des Buttons in Pixel. Standardwert: 40.</li>
+        <li><strong>command</strong> (<em>function</em>): Eine Funktion, die ausgeführt wird, wenn der Button geklickt wird.</li>
+      </ul>
+
+      <h3>Beispiel:</h3>
+      <pre><code>import tkinter as tk
+import bettertkinter as btk
+
+def on_button_click():
+    print("Button wurde geklickt!")
+
+# Hauptfenster erstellen
+root = tk.Tk()
+root.title("BetterTkinter Beispiel")
+
+# Button hinzufügen
+button = btk.BTkButton(
+    root, 
+    text="Klicken Sie hier", 
+    bg_color="#4CAF50", 
+    fg_color="white", 
+    hover_color="#45a049", 
+    rounded_radius=25, 
+    width=150, 
+    height=50, 
+    command=on_button_click
+)
+
+# Button im Fenster platzieren
+button.pack(pady=20)
+
+# Hauptloop starten
+root.mainloop()</code></pre>
+
+      <h3>Beschreibung der Funktionen:</h3>
+      <ul>
+        <li><strong>Text und Stil:</strong> Der Button kann durch die Parameter <code>text</code>, <code>bg_color</code>, <code>fg_color</code> und <code>hover_color</code> individuell angepasst werden.</li>
+        <li><strong>Abgerundete Ecken:</strong> Mit der Option <code>rounded_radius</code> können abgerundete Ecken für den Button festgelegt werden.</li>
+        <li><strong>Hover-Effekt:</strong> Der Button ändert seine Farbe beim Überfahren mit der Maus, basierend auf der <code>hover_color</code>.</li>
+      </ul>
+
+      <h3>Tipps:</h3>
+      <ul>
+        <li>Stellen Sie sicher, dass der <code>parent</code>-Parameter korrekt gesetzt ist, wenn der Button in einem <code>Frame</code> oder einem anderen Container-Widget angezeigt wird.</li>
+        <li>Mit der <code>command</code>-Option können Sie jede gewünschte Funktion ausführen, wenn der Button angeklickt wird.</li>
+      </ul>
+    </section>
+
+    <section id="section3" class="content-section">
+      <h2>BTkSlider</h2>
+      <p>Coming soon!</p>
+    </section>
+
+    <section id="section4" class="content-section">
+      <h2>BTkSwitch</h2>
+      <p>Coming soon!</p>
+    </section>
+
+    <section id="section5" class="content-section">
+      <h2>BTkFrame</h2>
+      <p><strong>Beschreibung:</strong> <b>BTkFrame</b> ist eine benutzerdefinierte Klasse, die von <code>tk.Frame</code> erbt und es ermöglicht, Frames mit erweiterten Anpassungsoptionen zu erstellen. Sie bietet die Möglichkeit, abgerundete Ecken, Farben, Rahmen und vieles mehr zu konfigurieren.</p>
+
+      <h3>Verwendung</h3>
+      <pre><code>import tkinter as tk
+import bettertkinter as btk
+
+# Erstellen eines BTkFrame
+frame = btk.BTkFrame(parent, radius=25, width=200, height=150, color="#4CAF50", 
+                   border=True, border_color="#FF4500", border_thick=5, border_bg_color="#FFFFFF")</code></pre>
+
+      <h3>Argumente:</h3>
+      <ul>
+        <li><strong>parent</strong> (<em>tk.Widget</em>): Der Eltern-Widget (normalerweise ein Fenster oder ein anderes Frame), in dem das Frame angezeigt wird.</li>
+        <li><strong>radius</strong> (<em>int</em>): Der Radius der abgerundeten Ecken des Frames. Standardwert: 25.</li>
+        <li><strong>width</strong> (<em>int</em>): Die Breite des Frames in Pixel. Standardwert: 100.</li>
+        <li><strong>height</strong> (<em>int</em>): Die Höhe des Frames in Pixel. Standardwert: 100.</li>
+        <li><strong>color</strong> (<em>str</em>): Die Hintergrundfarbe des Frames, entweder als Hex-Farbcode oder als benannter Farbstring. Standardwert: "#005A9E".</li>
+        <li><strong>border</strong> (<em>bool</em>): Bestimmt, ob der Frame einen Rand haben soll. Standardwert: <code>False</code>.</li>
+        <li><strong>border_color</strong> (<em>str</em>): Die Farbe des Rahmens, wenn <code>border</code> auf <code>True</code> gesetzt ist. Standardwert: "#FF4500".</li>
+        <li><strong>border_thick</strong> (<em>int</em>): Die Dicke des Rahmens. Standardwert: 0 (kein Rahmen).</li>
+        <li><strong>border_bg_color</strong> (<em>str</em>): Die Hintergrundfarbe des Rahmens. Standardwert: "#000000".</li>
+      </ul>
+
+      <h3>Beispiel:</h3>
+      <pre><code>import tkinter as tk
+import bettertkinter as btk
+
+def create_frame():
+    root = tk.Tk()
+    root.title("BetterTkinter BTkFrame")
+
+    # Erstellen eines Frames
+    frame = btk.BTkFrame(root, radius=15, width=300, height=200, color="#4CAF50", 
+                         border=True, border_color="#FF4500", border_thick=5, border_bg_color="#FFFFFF")
+
+    frame.pack(padx=10, pady=10)
+
+    root.mainloop()</code></pre>
+    </section>
+
+  </main>
 </body>
 </html>
