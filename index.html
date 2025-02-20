@@ -89,33 +89,34 @@ button = btk.button(parent, text="Klicken Sie hier", command=my_function)</code>
 
       <h3>Beispiel:</h3>
       <pre><code>import tkinter as tk
-import bettertkinter as btk
+        import bettertkinter as btk
 
-def on_button_click():
-    print("Button wurde geklickt!")
+        def on_button_click():
+            print("Button wurde geklickt!")
 
-# Hauptfenster erstellen
-root = tk.Tk()
-root.title("BetterTkinter Beispiel")
+        # Hauptfenster erstellen
+        root = tk.Tk()
+        root.title("BetterTkinter Beispiel")
 
-# Button hinzufügen
-button = btk.BTkButton(
-    root, 
-    text="Klicken Sie hier", 
-    bg_color="#4CAF50", 
-    fg_color="white", 
-    hover_color="#45a049", 
-    rounded_radius=25, 
-    width=150, 
-    height=50, 
-    command=on_button_click
-)
+        # Button hinzufügen
+        button = btk.BTkButton(
+            root, 
+            text="Klicken Sie hier", 
+            bg_color="#4CAF50", 
+            fg_color="white", 
+            hover_color="#45a049", 
+            rounded_radius=25, 
+            width=150, 
+            height=50, 
+            command=on_button_click
+        )
 
-# Button im Fenster platzieren
-button.pack(pady=20)
+        # Button im Fenster platzieren
+        button.pack(pady=20)
 
-# Hauptloop starten
-root.mainloop()</code></pre>
+        # Hauptloop starten
+        root.mainloop()
+      </code></pre>
 
       <h3>Beschreibung der Funktionen:</h3>
       <ul>
