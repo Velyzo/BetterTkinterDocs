@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Installation guide for BetterTkinter - Complete setup instructions for Windows, macOS, and Linux.">
+    <title>Installation Guide | BetterTkinter Documentation</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/components.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon-16x16.png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../../" class="navbar-brand">BetterTkinter</a>
+                
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search documentation...">
+                </div>
+                
+                <ul class="navbar-nav">
+                    <li><a href="../../#features">Features</a></li>
+                    <li><a href="../../#components">Components</a></li>
+                    <li><a href="../">Documentation</a></li>
+                    <li><a href="../../download.html" class="btn btn-primary">Download</a></li>
+                </ul>
+                
+                <button class="mobile-menu-toggle">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Documentation Layout -->
+    <div class="doc-layout container">
+        <!-- Sidebar Navigation -->
+        <aside class="doc-sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Getting Started</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="installation.html" class="active">Installation</a></li>
+                        <li><a href="quickstart.html">Quick Start</a></li>
+                        <li><a href="deployment.html">Deployment</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Components</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="../components/BTkButton.html">BTkButton</a></li>
+                        <li><a href="../components/BTkFrame.html">BTkFrame</a></li>
+                        <li><a href="../components/BTkColorPicker.html">BTkColorPicker</a></li>
+                        <li><a href="../components/BTkDialog.html">BTkDialog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">API Reference</h3>
+                    <ul class="sidebar-nav">
+                        <li><a href="../api/">Core API</a></li>
+                        <li><a href="../api/themes.html">Theming</a></li>
+                        <li><a href="../api/utilities.html">Utilities</a></li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="doc-content">
+            <!-- Guide Header -->
+            <div style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-8);">
+                <div class="component-icon" style="margin: 0;">🚀</div>
+                <div>
+                    <h1 style="margin: 0;">Installation & Setup Guide</h1>
+                    <p style="margin: 0; color: var(--dark-text-secondary);">Complete installation instructions for all platforms</p>
+                </div>
+            </div>
+
+            <!-- Prerequisites -->
+            <section style="margin-bottom: var(--space-10);">
+                <h2>📋 Prerequisites</h2>
+                
+                <h3>System Requirements</h3>
+                <div class="grid grid-cols-2">
+                    <div class="card">
+                        <h4>Minimum Requirements</h4>
+                        <ul style="list-style-type: disc; padding-left: var(--space-5); color: var(--dark-text-secondary); line-height: 1.8;">
+                            <li><strong>Python:</strong> Version 3.7 or higher</li>
+                            <li><strong>OS:</strong> Windows 10+, macOS 10.12+, Linux</li>
+                            <li><strong>Memory:</strong> 512MB RAM available</li>
+                            <li><strong>Storage:</strong> 50MB free space</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Dependencies</h4>
+                        <ul style="list-style-type: disc; padding-left: var(--space-5); color: var(--dark-text-secondary); line-height: 1.8;">
+                            <li><strong>tkinter:</strong> Included with Python</li>
+                            <li><strong>Pillow:</strong> For image handling</li>
+                            <li><strong>pystray:</strong> System tray integration</li>
+                            <li><strong>configparser:</strong> Configuration management</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Installation Methods -->
+            <section style="margin-bottom: var(--space-10);">
+                <h2>🔧 Installation Methods</h2>
+                
+                <div class="tabs">
+                    <div class="tab-nav">
+                        <button class="tab-button active" data-tab="pip">PyPI (Recommended)</button>
+                        <button class="tab-button" data-tab="git">From Source</button>
+                        <button class="tab-button" data-tab="conda">Conda</button>
+                    </div>
+                    
+                    <div class="tab-content active" data-tab-content="pip">
+                        <h3>Install from PyPI</h3>
+                        <p>The easiest way to install BetterTkinter is using pip:</p>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-language">Shell</span>
+                                <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                            </div>
+                            <pre><code># Install the latest stable version
+pip install bettertkinter
+
+# Install with all optional dependencies
+pip install bettertkinter[all]
+
+# Upgrade to latest version
+pip install --upgrade bettertkinter</code></pre>
+                        </div>
+                        
+                        <div class="alert alert-success">
+                            <strong>Recommended:</strong> This method automatically handles all dependencies and provides the most stable experience.
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-tab-content="git">
+                        <h3>Install from Source</h3>
+                        <p>Get the latest development version directly from GitHub:</p>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-language">Shell</span>
+                                <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                            </div>
+                            <pre><code># Clone the repository
+git clone https://github.com/Velyzo/BetterTkinter.git
+cd BetterTkinter
+
+# Install in development mode
+pip install -e .
+
+# Or install directly from GitHub
+pip install git+https://github.com/Velyzo/BetterTkinter.git</code></pre>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <strong>Development Version:</strong> May contain unreleased features and potential bugs. Use for testing and contribution only.
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-tab-content="conda">
+                        <h3>Install with Conda</h3>
+                        <p>For conda users (coming soon):</p>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-language">Shell</span>
+                                <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                            </div>
+                            <pre><code># Coming soon - use pip for now
+# conda install -c conda-forge bettertkinter
+
+# Alternative: use pip within conda
+conda install pip
+pip install bettertkinter</code></pre>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <strong>Coming Soon:</strong> Conda package is in development. Use pip installation for now.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Platform-Specific Instructions -->
+            <section style="margin-bottom: var(--space-10);">
+                <h2>💻 Platform-Specific Instructions</h2>
+                
+                <div class="tabs">
+                    <div class="tab-nav">
+                        <button class="tab-button active" data-tab="windows">Windows</button>
+                        <button class="tab-button" data-tab="macos">macOS</button>
+                        <button class="tab-button" data-tab="linux">Linux</button>
+                    </div>
+                    
+                    <div class="tab-content active" data-tab-content="windows">
+                        <h3>🪟 Windows Installation</h3>
+                        
+                        <div class="card">
+                            <h4>Step 1: Install Python</h4>
+                            <p>Download Python from <a href="https://python.org/downloads/" target="_blank">python.org</a> if not already installed.</p>
+                            <div class="alert alert-info">
+                                <strong>Important:</strong> Make sure to check "Add Python to PATH" during installation.
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>Step 2: Open Command Prompt</h4>
+                            <p>Press <kbd>Win + R</kbd>, type <code>cmd</code>, and press Enter.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>Step 3: Install BetterTkinter</h4>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-language">Shell</span>
+                                    <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                                </div>
+                                <pre><code>pip install bettertkinter</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-success">
+                            <strong>Windows-Specific Features:</strong> Full support for Windows theming, native dialogs, and system tray integration.
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-tab-content="macos">
+                        <h3>🍎 macOS Installation</h3>
+                        
+                        <div class="card">
+                            <h4>Step 1: Install Python</h4>
+                            <p>Install using Homebrew (recommended) or download from python.org:</p>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-language">Shell</span>
+                                    <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                                </div>
+                                <pre><code># Using Homebrew
+brew install python
+
+# Or download from python.org</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>Step 2: Install BetterTkinter</h4>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-language">Shell</span>
+                                    <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                                </div>
+                                <pre><code># Install BetterTkinter
+pip3 install bettertkinter
+
+# If you get permission errors, use:
+pip3 install --user bettertkinter</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <strong>macOS Note:</strong> Tkinter applications may require special permissions. Check System Preferences > Security & Privacy if you encounter issues.
+                        </div>
+                    </div>
+                    
+                    <div class="tab-content" data-tab-content="linux">
+                        <h3>🐧 Linux Installation</h3>
+                        
+                        <div class="card">
+                            <h4>Ubuntu/Debian</h4>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-language">Shell</span>
+                                    <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                                </div>
+                                <pre><code># Install Python and tkinter
+sudo apt update
+sudo apt install python3 python3-pip python3-tk
+
+# Install BetterTkinter
+pip3 install bettertkinter</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="card">
+                            <h4>CentOS/RHEL/Fedora</h4>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-language">Shell</span>
+                                    <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                                </div>
+                                <pre><code># CentOS/RHEL
+sudo yum install python3 python3-pip tkinter
+
+# Fedora
+sudo dnf install python3 python3-pip python3-tkinter
+
+# Install BetterTkinter
+pip3 install bettertkinter</code></pre>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-warning">
+                            <strong>Linux Note:</strong> Some distributions package tkinter separately. Make sure python3-tk or python3-tkinter is installed.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Verification -->
+            <section style="margin-bottom: var(--space-10);">
+                <h2>✅ Verify Installation</h2>
+                
+                <p>Test your installation with this simple script:</p>
+                
+                <div class="code-block">
+                    <div class="code-header">
+                        <span class="code-language">Python</span>
+                        <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                    </div>
+                    <pre><code># test_installation.py
+try:
+    import bettertkinter as btk
+    print(f"✅ BetterTkinter {btk.__version__} installed successfully!")
+    
+    # Test basic functionality
+    import tkinter as tk
+    root = tk.Tk()
+    root.title("BetterTkinter Test")
+    root.geometry("300x200")
+    
+    # Create a BetterTkinter button
+    button = btk.BTkButton(
+        root, 
+        text="Test Button", 
+        command=lambda: print("Button clicked!")
+    )
+    button.pack(pady=50)
+    
+    print("✅ Test window created successfully!")
+    print("Close the window to complete the test.")
+    
+    root.mainloop()
+    
+except ImportError as e:
+    print(f"❌ Installation failed: {e}")
+    print("Please check your installation and try again.")
+except Exception as e:
+    print(f"❌ Error: {e}")
+    print("Please check the documentation for troubleshooting.")</code></pre>
+                </div>
+                
+                <div class="alert alert-success">
+                    <strong>Expected Output:</strong> A small window with a test button should appear. If you see this, your installation is successful!
+                </div>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section style="margin-bottom: var(--space-10);">
+                <h2>🔧 Troubleshooting</h2>
+                
+                <div class="grid grid-cols-1">
+                    <div class="card">
+                        <h3>Common Issues</h3>
+                        
+                        <h4>"No module named 'bettertkinter'"</h4>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-language">Shell</span>
+                                <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                            </div>
+                            <pre><code># Check if pip is using the correct Python version
+python -m pip install bettertkinter
+
+# On macOS/Linux, you might need:
+python3 -m pip install bettertkinter</code></pre>
+                        </div>
+                        
+                        <h4>"Permission denied" errors</h4>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-language">Shell</span>
+                                <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                            </div>
+                            <pre><code># Install for current user only
+pip install --user bettertkinter
+
+# Or use virtual environment (recommended)
+python -m venv btk_env
+source btk_env/bin/activate  # On Windows: btk_env\Scripts\activate
+pip install bettertkinter</code></pre>
+                        </div>
+                        
+                        <h4>"Tkinter not found" on Linux</h4>
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-language">Shell</span>
+                                <button class="code-copy-btn" onclick="btDocs.copyCode(this)">Copy</button>
+                            </div>
+                            <pre><code># Ubuntu/Debian
+sudo apt install python3-tk
+
+# CentOS/RHEL
+sudo yum install tkinter
+
+# Fedora
+sudo dnf install python3-tkinter</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <strong>Still having issues?</strong> Check our <a href="https://github.com/Velyzo/BetterTkinter/issues" target="_blank">GitHub issues</a> or create a new issue with your error details.
+                </div>
+            </section>
+
+            <!-- Next Steps -->
+            <section>
+                <h2>🎯 Next Steps</h2>
+                
+                <div class="component-grid">
+                    <div class="component-card">
+                        <div class="component-icon">⚡</div>
+                        <h3 class="component-title">Quick Start Guide</h3>
+                        <p class="component-description">Learn the basics and create your first BetterTkinter application.</p>
+                        <div class="component-links">
+                            <a href="quickstart.html" class="btn btn-primary">Get Started</a>
+                        </div>
+                    </div>
+                    
+                    <div class="component-card">
+                        <div class="component-icon">🧩</div>
+                        <h3 class="component-title">Explore Components</h3>
+                        <p class="component-description">Discover all the beautiful components BetterTkinter offers.</p>
+                        <div class="component-links">
+                            <a href="../components/" class="btn btn-primary">Browse Components</a>
+                        </div>
+                    </div>
+                    
+                    <div class="component-card">
+                        <div class="component-icon">💡</div>
+                        <h3 class="component-title">View Examples</h3>
+                        <p class="component-description">Get inspired with real-world examples and code samples.</p>
+                        <div class="component-links">
+                            <a href="../examples/" class="btn btn-primary">View Examples</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Table of Contents -->
+        <aside class="doc-toc">
+            <h3>On This Page</h3>
+            <ul>
+                <li><a href="#prerequisites">Prerequisites</a></li>
+                <li><a href="#installation">Installation Methods</a></li>
+                <li><a href="#platforms">Platform Instructions</a></li>
+                <li><a href="#verification">Verify Installation</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+                <li><a href="#next-steps">Next Steps</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>

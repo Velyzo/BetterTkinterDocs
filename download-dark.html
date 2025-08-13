@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download - BetterTkinter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --dark: #0f0f23;
+            --darker: #070815;
+            --card-bg: #1a1b3a;
+            --text: #e2e8f0;
+            --text-light: #94a3b8;
+            --text-dark: #1e293b;
+            --border: #334155;
+            --border-light: #475569;
+            --shadow: rgba(0, 0, 0, 0.5);
+            --shadow-lg: rgba(0, 0, 0, 0.7);
+            --star-color: #fbbf24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--star-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
+        }
+
+        .logo a {
+            text-decoration: none;
+            background: inherit;
+            -webkit-background-clip: inherit;
+            -webkit-text-fill-color: inherit;
+            background-clip: inherit;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-links a:hover::before {
+            left: 0;
+        }
+
+        .nav-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.4);
+        }
+
+        /* Page Header with Stars */
+        .page-header {
+            background: linear-gradient(135deg, var(--darker), var(--card-bg));
+            color: var(--text);
+            text-align: center;
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, var(--star-color), transparent),
+                radial-gradient(1px 1px at 40px 70px, var(--accent), transparent),
+                radial-gradient(2px 2px at 90px 40px, var(--star-color), transparent),
+                radial-gradient(1px 1px at 130px 80px, var(--accent), transparent),
+                radial-gradient(1px 1px at 160px 30px, var(--star-color), transparent),
+                radial-gradient(2px 2px at 200px 100px, var(--accent), transparent),
+                radial-gradient(1px 1px at 220px 60px, var(--star-color), transparent),
+                radial-gradient(2px 2px at 250px 20px, var(--accent), transparent);
+            background-repeat: repeat;
+            background-size: 300px 120px;
+            opacity: 0.4;
+            animation: starfield 40s linear infinite;
+        }
+
+        @keyframes starfield {
+            0% { transform: translateX(0px); }
+            100% { transform: translateX(-300px); }
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(245, 158, 11, 0.3);
+            position: relative;
+        }
+
+        .page-header h1::after {
+            content: '💫';
+            position: absolute;
+            top: -20px;
+            right: -30px;
+            font-size: 1.5rem;
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; transform: scale(1) rotate(0deg); }
+            100% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+        }
+
+        .page-header p {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            background: var(--dark);
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, var(--darker), var(--card-bg));
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--text), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        }
+
+        /* Download Cards */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .download-card {
+            background: var(--card-bg);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            padding: 4rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        }
+
+        .download-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+            border-color: var(--accent);
+        }
+
+        .download-card .icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            display: block;
+            filter: drop-shadow(0 0 15px var(--star-color));
+        }
+
+        .download-card h3 {
+            font-size: 2rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .download-card p {
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 40px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(79, 70, 229, 0.6);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success), #00d4ff);
+            color: white;
+            box-shadow: 0 10px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.6);
+        }
+
+        /* Install Section */
+        .install-section {
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 4rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .install-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        }
+
+        .install-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--text);
+            font-weight: 800;
+        }
+
+        .code-block {
+            background: linear-gradient(135deg, var(--darker), #000012);
+            color: #e2e8f0;
+            padding: 3rem;
+            border-radius: 20px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1.3rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+            position: relative;
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #ff5f57;
+            border-radius: 50%;
+            box-shadow: 20px 0 #ffbd2e, 40px 0 #28ca42;
+        }
+
+        .code-block code {
+            margin-left: 5rem;
+            display: block;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+        }
+
+        .quick-start {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+            border-left: 6px solid var(--success);
+            padding: 3rem;
+            margin: 3rem 0;
+            border-radius: 0 20px 20px 0;
+            position: relative;
+        }
+
+        .quick-start h4 {
+            color: var(--success);
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .quick-start p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Links Section */
+        .links-section {
+            background: var(--card-bg);
+            padding: 4rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            margin: 3rem 0;
+            border: 1px solid var(--border);
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, var(--darker), rgba(26, 27, 58, 0.8));
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.4s ease;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .link-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .link-item:hover {
+            background: var(--card-bg);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+        }
+
+        .link-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 2rem;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+        }
+
+        .link-content strong {
+            display: block;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .link-content small {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--darker), #000012);
+            color: var(--text);
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--border);
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        footer a {
+            color: var(--text);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        footer a:hover::before {
+            left: 0;
+        }
+
+        footer a:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        footer p {
+            color: var(--text-light);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .download-grid,
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .install-section,
+            .download-card,
+            .links-section {
+                padding: 2.5rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+        }
+
+        /* Smooth Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page-header-content,
+        .install-section,
+        .download-card,
+        .links-section {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><a href="index.html">BetterTkinter</a></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#install">Install</a></li>
+                    <li><a href="#download">Download</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1>Download BetterTkinter</h1>
+                <p>Get started with the modern Tkinter enhancement library</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="install" class="section">
+            <h2>Installation</h2>
+            
+            <div class="install-section">
+                <h3>Install with pip</h3>
+                <div class="code-block">
+                    <code>pip install bettertkinter</code>
+                </div>
+                
+                <div class="quick-start">
+                    <h4>✨ Quick Start</h4>
+                    <p>After installation, you can immediately start using BetterTkinter:</p>
+                    <div class="code-block">import tkinter as tk
+import bettertkinter as btk
+
+root = tk.Tk()
+button = btk.BTkButton(root, text="Hello World!")
+button.pack()
+root.mainloop()</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="section">
+            <h2>Download Documentation</h2>
+            
+            <div class="download-grid">
+                <div class="download-card">
+                    <span class="icon">📚</span>
+                    <h3>Complete Documentation</h3>
+                    <p>Download the complete documentation package with examples and API reference.</p>
+                    <a href="docs.zip" class="btn btn-primary" download>
+                        📥 Download ZIP
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Official Links</h2>
+            
+            <div class="links-section">
+                <div class="links-grid">
+                    <a href="https://pypi.org/project/BetterTkinter/" class="link-item">
+                        <div class="link-icon">🐍</div>
+                        <div class="link-content">
+                            <strong>PyPI Package</strong>
+                            <small>Official Python package</small>
+                        </div>
+                    </a>
+                    
+                    <a href="https://github.com/Velyzo/BetterTkinter" class="link-item">
+                        <div class="link-icon">⭐</div>
+                        <div class="link-content">
+                            <strong>GitHub Repository</strong>
+                            <small>Source code and issues</small>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>
+                    <a href="https://github.com/Velyzo/BetterTkinter">GitHub</a>
+                    <a href="https://pypi.org/project/BetterTkinter/">PyPI</a>
+                </p>
+                <p>&copy; 2025 BetterTkinter. MIT License.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

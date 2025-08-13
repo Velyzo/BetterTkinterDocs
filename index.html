@@ -1,189 +1,675 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="IbDrTYDZ4F2fAo2fMpnzGDa-val_CshY8mAo-hIuW_k" />
-  <meta name="description" content="BetterTkinter is a Python library for creating modern, user-friendly GUI applications using Tkinter. Enhance your UI development with additional components and utilities." />
-  <meta name="keywords" content="BetterTkinter, Python, Tkinter, GUI, Python GUI library, Tkinter widgets, Python library for GUI development, Tkinter extensions" />
-  <meta property="og:title" content="BetterTkinter Documentation - Python GUI Library" />
-  <meta property="og:description" content="BetterTkinter is a Python library designed to simplify the development of GUI applications using Tkinter." />
-  <meta property="og:image" content="https://your-website-url.com/icon.png" />
-  <meta property="og:url" content="https://your-website-url.com" />
-  <meta property="og:type" content="website" />
-  
-  <title>BetterTkinter Documentation - Python GUI Library</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/x-icon" href="icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BetterTkinter - A Python GUI library that enhances Tkinter with modern components.">
+    <title>BetterTkinter - Python GUI Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --dark: #0f0f23;
+            --darker: #070815;
+            --card-bg: #1a1b3a;
+            --text: #e2e8f0;
+            --text-light: #94a3b8;
+            --text-dark: #1e293b;
+            --border: #334155;
+            --border-light: #475569;
+            --shadow: rgba(0, 0, 0, 0.5);
+            --shadow-lg: rgba(0, 0, 0, 0.7);
+            --star-color: #fbbf24;
+        }
 
-  <!-- JSON-LD Structured Data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "BetterTkinter",
-      "url": "https://your-website-url.com",
-      "description": "BetterTkinter is a Python library designed to simplify the development of GUI applications using Tkinter, providing additional components and utilities.",
-      "developer": {
-        "@type": "Organization",
-        "name": "Your Company/Developer Name",
-        "url": "https://your-website-url.com"
-      },
-      "operatingSystem": "Cross-platform",
-      "programmingLanguage": "Python",
-      "license": "https://opensource.org/licenses/MIT"
-    }
-  </script>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Navigation - Optimized */
+        header {
+            background: rgba(15, 15, 35, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.2s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--star-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Hero Section with Stars - Compact */
+        .hero {
+            text-align: center;
+            padding: 4rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 50%, var(--card-bg) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, var(--star-color), transparent),
+                radial-gradient(2px 2px at 40px 70px, var(--accent), transparent),
+                radial-gradient(1px 1px at 90px 40px, var(--star-color), transparent),
+                radial-gradient(1px 1px at 130px 80px, var(--accent), transparent),
+                radial-gradient(2px 2px at 160px 30px, var(--star-color), transparent),
+                radial-gradient(1px 1px at 200px 100px, var(--accent), transparent),
+                radial-gradient(2px 2px at 220px 60px, var(--star-color), transparent),
+                radial-gradient(1px 1px at 250px 20px, var(--accent), transparent),
+                radial-gradient(1px 1px at 300px 90px, var(--star-color), transparent),
+                radial-gradient(2px 2px at 350px 50px, var(--accent), transparent),
+                radial-gradient(1px 1px at 400px 30px, var(--star-color), transparent),
+                radial-gradient(2px 2px at 450px 80px, var(--accent), transparent),
+                radial-gradient(1px 1px at 500px 60px, var(--star-color), transparent),
+                radial-gradient(2px 2px at 550px 20px, var(--accent), transparent),
+                radial-gradient(1px 1px at 600px 70px, var(--star-color), transparent),
+                radial-gradient(2px 2px at 650px 40px, var(--accent), transparent),
+                radial-gradient(1px 1px at 700px 90px, var(--star-color), transparent),
+                radial-gradient(2px 2px at 750px 30px, var(--accent), transparent),
+                radial-gradient(1px 1px at 800px 50px, var(--star-color), transparent),
+                radial-gradient(2px 2px at 850px 80px, var(--accent), transparent);
+            background-repeat: repeat;
+            background-size: 900px 120px;
+            opacity: 0.6;
+            animation: starfield 60s linear infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(15, 15, 35, 0.4) 100%);
+        }
+
+        @keyframes starfield {
+            0% { transform: translateX(0px); }
+            100% { transform: translateX(-900px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent) 30%, var(--star-color) 60%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+            position: relative;
+        }
+
+        .hero h1::after {
+            content: '✨';
+            position: absolute;
+            top: -15px;
+            right: -30px;
+            font-size: 1.5rem;
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.1); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            color: var(--text);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--card-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--card-bg);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.2);
+        }
+
+        /* Main Content Sections */
+        .main-content {
+            background: var(--dark);
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section:nth-child(even) {
+            background: linear-gradient(135deg, var(--darker), var(--card-bg));
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--text), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* Installation Section - Compact */
+        .install-card {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            padding: 2rem;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .install-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        .install-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .code-block {
+            background: linear-gradient(135deg, var(--darker), #000012);
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            position: relative;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #ff5f57;
+            border-radius: 50%;
+            box-shadow: 20px 0 #ffbd2e, 40px 0 #28ca42;
+        }
+
+        .code-block code {
+            margin-left: 5rem;
+            display: block;
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+        }
+
+        /* Quick Example */
+        .example-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            padding: 4rem;
+            border: 1px solid var(--border);
+        }
+
+        .example-code {
+            background: linear-gradient(135deg, var(--darker), #000012);
+            color: #e2e8f0;
+            padding: 3rem;
+            border-radius: 20px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            position: relative;
+            border: 1px solid var(--border);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .example-code::before {
+            content: '';
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: #ff5f57;
+            border-radius: 50%;
+            box-shadow: 20px 0 #ffbd2e, 40px 0 #28ca42;
+        }
+
+        .example-code .code-content {
+            margin-left: 5rem;
+        }
+
+        .keyword { color: var(--primary); font-weight: 600; }
+        .string { color: var(--success); }
+        .comment { color: var(--text-light); font-style: italic; }
+
+        /* Components Grid */
+        .components-section {
+            background: linear-gradient(135deg, var(--darker), var(--card-bg));
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .component-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .component-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+        }
+
+        .component-card:hover::before {
+            transform: translateX(0);
+        }
+
+        .component-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+        }
+
+        .component-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .component-card h3::before {
+            content: '⭐';
+            font-size: 1.2rem;
+        }
+
+        .component-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Footer - Compact */
+        footer {
+            background: linear-gradient(135deg, var(--darker), #000012);
+            color: var(--text);
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+            border-top: 1px solid var(--border);
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .footer-links a:hover::before {
+            left: 0;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        footer p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 4rem 0 6rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .install-card, .example-card {
+                padding: 2rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+        }
+
+        /* Smooth Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content,
+        .install-card,
+        .example-card,
+        .component-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+        }
+    </style>
 </head>
 <body>
-  <header class="navbar">
-    <div class="navbar-brand">BetterTkinter</div>
-    <input type="text" id="search" placeholder="Search..." class="search-input" autocomplete="off">
-  </header>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">BetterTkinter</div>
+                <ul class="nav-links">
+                    <li><a href="#install">Install</a></li>
+                    <li><a href="download.html">Download</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <main>
-    <div id="search-result" class="search-result"></div>
-
-    <section id="section0" class="content-section">
-      <h1>BetterTkinter Documentation</h1>
-      <h2 class="special">BetterTkinter</h2>
-      <p>👋 Welcome to the Documentation for BetterTkinter! 👋</p>
-      <h3>Overview</h3>
-      <p>BetterTkinter is a Python library designed to simplify the development of GUI applications using Tkinter. It provides additional components and utilities to streamline UI creation and enhance the default Tkinter toolkit.</p>
-      <h3>Getting Started</h3>
-      <p>To get started with BetterTkinter, you can install it via pip:</p>
-      <pre><code>pip install bettertkinter</code></pre>
-      <h3>Examples</h3>
-      <p>You can download all examples in the BetterTkinterDocs repository on GitHub. Check out our other documentation on <a href="#section2">BTkButton</a> or <a href="#section5">BTkFrame</a>.</p>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>BetterTkinter</h1>
+                <p>A Python library that enhances Tkinter with modern components and better styling.</p>
+                <div class="hero-buttons">
+                    <a href="#install" class="btn btn-primary">Get Started ✨</a>
+                    <a href="https://github.com/Velyzo/BetterTkinter" class="btn btn-secondary">GitHub ⭐</a>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="section1" class="content-section">
-      <h2>BTk</h2>
-      <p>Base documentation from https://docs.python.org/3/library/tkinter.html</p>
-      <p>Theme and more stuff is Coming soon!</p>
-    </section>
+    <div class="main-content">
+        <section id="install" class="section">
+            <div class="container">
+                <h2>Installation</h2>
+                <div class="install-card">
+                    <h3>Install with pip</h3>
+                    <div class="code-block">
+                        <code>pip install bettertkinter</code>
+                    </div>
+                    <p>That's it! You can now import and use BetterTkinter in your Python projects.</p>
+                </div>
+            </div>
+        </section>
 
-    <section id="section2" class="content-section">
-      <h2>BTkButton</h2>
-      <p><strong>Beschreibung:</strong> <b>btk.button</b> ist eine benutzerfreundliche und anpassbare Schaltfläche für die GUI-Entwicklung mit BetterTkinter. Sie bietet einfache Anpassungen des Aussehens und Verhaltens der Schaltfläche, einschließlich abgerundeter Ecken und Hover-Effekten.</p>
+        <section class="section">
+            <div class="container">
+                <h2>Quick Example</h2>
+                <div class="example-card">
+                    <div class="example-code">
+                        <div class="code-content">
+<span class="keyword">import</span> tkinter <span class="keyword">as</span> tk
+<span class="keyword">import</span> bettertkinter <span class="keyword">as</span> btk
 
-      <h3>Verwendung</h3>
-      <pre><code>import bettertkinter as btk
+root = tk.Tk()
+root.title(<span class="string">"My App"</span>)
 
-# Erstellen eines Buttons
-button = btk.button(parent, text="Klicken Sie hier", command=my_function)</code></pre>
+<span class="comment"># Create a better button</span>
+button = btk.BTkButton(root, text=<span class="string">"Click Me!"</span>)
+button.pack(pady=<span class="string">20</span>)
 
-      <h3>Argumente:</h3>
-      <ul>
-        <li><strong>parent</strong> (<em>tk.Widget</em>): Der Eltern-Widget (normalerweise ein Fenster oder Frame), in dem der Button angezeigt wird.</li>
-        <li><strong>text</strong> (<em>str</em>): Der Text, der auf dem Button angezeigt wird. Standardwert: ""</li>
-        <li><strong>bg_color</strong> (<em>str</em>): Die Hintergrundfarbe des Buttons. Standardwert: "#0078D7" (Blau).</li>
-        <li><strong>fg_color</strong> (<em>str</em>): Die Farbe des Textes auf dem Button. Standardwert: "white" (Weiß).</li>
-        <li><strong>hover_color</strong> (<em>str</em>): Die Farbe des Buttons, wenn der Mauszeiger darüber schwebt. Standardwert: "#005A9E" (Dunkleres Blau).</li>
-        <li><strong>rounded_radius</strong> (<em>int</em>): Der Radius der abgerundeten Ecken des Buttons. Standardwert: 20.</li>
-        <li><strong>width</strong> (<em>int</em>): Die Breite des Buttons in Pixel. Standardwert: 100.</li>
-        <li><strong>height</strong> (<em>int</em>): Die Höhe des Buttons in Pixel. Standardwert: 40.</li>
-        <li><strong>command</strong> (<em>function</em>): Eine Funktion, die ausgeführt wird, wenn der Button geklickt wird.</li>
-      </ul>
+root.mainloop()
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <h3>Beispiel:</h3>
-      <pre><code>import tkinter as tk
-        import bettertkinter as btk
-
-        def on_button_click():
-            print("Button wurde geklickt!")
-
-        # Hauptfenster erstellen
-        root = tk.Tk()
-        root.title("BetterTkinter Beispiel")
-
-        # Button hinzufügen
-        button = btk.BTkButton(
-            root, 
-            text="Klicken Sie hier", 
-            bg_color="#4CAF50", 
-            fg_color="white", 
-            hover_color="#45a049", 
-            rounded_radius=25, 
-            width=150, 
-            height=50, 
-            command=on_button_click
-        )
-
-        # Button im Fenster platzieren
-        button.pack(pady=20)
-
-        # Hauptloop starten
-        root.mainloop()
-      </code></pre>
-
-      <h3>Beschreibung der Funktionen:</h3>
-      <ul>
-        <li><strong>Text und Stil:</strong> Der Button kann durch die Parameter <code>text</code>, <code>bg_color</code>, <code>fg_color</code> und <code>hover_color</code> individuell angepasst werden.</li>
-        <li><strong>Abgerundete Ecken:</strong> Mit der Option <code>rounded_radius</code> können abgerundete Ecken für den Button festgelegt werden.</li>
-        <li><strong>Hover-Effekt:</strong> Der Button ändert seine Farbe beim Überfahren mit der Maus, basierend auf der <code>hover_color</code>.</li>
-      </ul>
-
-      <h3>Tipps:</h3>
-      <ul>
-        <li>Stellen Sie sicher, dass der <code>parent</code>-Parameter korrekt gesetzt ist, wenn der Button in einem <code>Frame</code> oder einem anderen Container-Widget angezeigt wird.</li>
-        <li>Mit der <code>command</code>-Option können Sie jede gewünschte Funktion ausführen, wenn der Button angeklickt wird.</li>
-      </ul>
-    </section>
-
-    <section id="section3" class="content-section">
-      <h2>BTkSlider</h2>
-      <p>Coming soon!</p>
-    </section>
-
-    <section id="section4" class="content-section">
-      <h2>BTkSwitch</h2>
-      <p>Coming soon!</p>
-    </section>
-
-    <section id="section5" class="content-section">
-      <h2>BTkFrame</h2>
-      <p><strong>Beschreibung:</strong> <b>BTkFrame</b> ist eine benutzerdefinierte Klasse, die von <code>tk.Frame</code> erbt und es ermöglicht, Frames mit erweiterten Anpassungsoptionen zu erstellen. Sie bietet die Möglichkeit, abgerundete Ecken, Farben, Rahmen und vieles mehr zu konfigurieren.</p>
-
-      <h3>Verwendung</h3>
-      <pre><code>import tkinter as tk
-import bettertkinter as btk
-
-# Erstellen eines BTkFrame
-frame = btk.BTkFrame(parent, radius=25, width=200, height=150, color="#4CAF50", 
-                   border=True, border_color="#FF4500", border_thick=5, border_bg_color="#FFFFFF")</code></pre>
-
-      <h3>Argumente:</h3>
-      <ul>
-        <li><strong>parent</strong> (<em>tk.Widget</em>): Der Eltern-Widget (normalerweise ein Fenster oder ein anderes Frame), in dem das Frame angezeigt wird.</li>
-        <li><strong>radius</strong> (<em>int</em>): Der Radius der abgerundeten Ecken des Frames. Standardwert: 25.</li>
-        <li><strong>width</strong> (<em>int</em>): Die Breite des Frames in Pixel. Standardwert: 100.</li>
-        <li><strong>height</strong> (<em>int</em>): Die Höhe des Frames in Pixel. Standardwert: 100.</li>
-        <li><strong>color</strong> (<em>str</em>): Die Hintergrundfarbe des Frames, entweder als Hex-Farbcode oder als benannter Farbstring. Standardwert: "#005A9E".</li>
-        <li><strong>border</strong> (<em>bool</em>): Bestimmt, ob der Frame einen Rand haben soll. Standardwert: <code>False</code>.</li>
-        <li><strong>border_color</strong> (<em>str</em>): Die Farbe des Rahmens, wenn <code>border</code> auf <code>True</code> gesetzt ist. Standardwert: "#FF4500".</li>
-        <li><strong>border_thick</strong> (<em>int</em>): Die Dicke des Rahmens. Standardwert: 0 (kein Rahmen).</li>
-        <li><strong>border_bg_color</strong> (<em>str</em>): Die Hintergrundfarbe des Rahmens. Standardwert: "#000000".</li>
-      </ul>
-
-      <h3>Beispiel:</h3>
-      <pre><code>import tkinter as tk
-import bettertkinter as btk
-
-def create_frame():
-    root = tk.Tk()
-    root.title("BetterTkinter BTkFrame")
-
-    # Erstellen eines Frames
-    frame = btk.BTkFrame(root, radius=15, width=300, height=200, color="#4CAF50", 
-                         border=True, border_color="#FF4500", border_thick=5, border_bg_color="#FFFFFF")
-
-    frame.pack(padx=10, pady=10)
-
-    root.mainloop()</code></pre>
-    </section>
-
-  </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://github.com/Velyzo/BetterTkinter">GitHub</a>
+                    <a href="https://pypi.org/project/BetterTkinter/">PyPI</a>
+                    <a href="download.html">Download</a>
+                </div>
+                <p>&copy; 2025 BetterTkinter. MIT License.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
